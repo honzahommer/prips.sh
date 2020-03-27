@@ -23,4 +23,4 @@ mkdir -p "$PRIPS_PREFIX"/{bin,libexec}
 cp -R "$PRIPS_ROOT"/bin/* "$PRIPS_PREFIX"/bin
 cp -R "$PRIPS_ROOT"/libexec/* "$PRIPS_PREFIX"/libexec
 
-echo "Installed prips.sh to $PREFIX/bin/prips.sh"
+echo "Installed prips.sh to $PRIPS_PREFIX/bin/prips.sh"
