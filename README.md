@@ -38,6 +38,10 @@ For example, to install prips.sh into `/usr/local`:
 Note that you may need to run `install.sh` with `sudo` if you do not
 have permission to write to the installation prefix.
 
+Or use on-line install script:
+
+    $ wget -qO- https://git.io/prips.sh | sh [-s - PREFIX]`
+
 ## Support
 
 The prips.sh source code repository is [hosted on
