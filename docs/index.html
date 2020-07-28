@@ -1,0 +1,28 @@
+#!/bin/sh
+
+for _GET in fetch curl wget; do
+  type "$_GET" >/dev/null 2>&1 && continue
+  unset -f _GET
+done
+
+case "$_GET" in
+  curl)
+    _GET="$_GET -S"
+    ;;
+  fetch)
+    _GET="$_GET -qo-"
+    ;;
+  wget)
+    _GET="$_GET -qO-"
+    ;;
+  *)
+    >&2 echo "Please install curl, fetch or wget first"
+    exit 1
+    ;;
+esac
+
+TEMP=$(mktemp -d -t prips.sh)
+trap 'rm -fr "$TEMP"' EXIT
+
+$_GET https://github.com/honzahommer/prips.sh/archive/master.tar.gz | \
+  tar zxf - --strip 1 -C "$TEMP" && "$TEMP/install.sh" "${1:-$PREFIX}"
